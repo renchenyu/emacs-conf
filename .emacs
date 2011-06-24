@@ -1,6 +1,6 @@
-(global-set-key (kbd "C-x C-b") 'bs-show) ;another buffer list
+(Global-set-key (kbd "C-x C-b") 'bs-show) ;another buffer list
 
-(global-linum-mode t) ;show line number
+;;; (global-linum-mode t) ;show line number
 (setq inhibit-startup-message t) ;disable startup message
 (menu-bar-mode -1) ;disable menu bar
 (global-hl-line-mode t) ;highlight the current line
@@ -22,3 +22,5 @@
 (add-to-list 'interpreter-mode-alist '("miniperl" . cperl-mode))
 (setq cperl-hairy t)
 
+(add-to-list 'load-path "/home/bkapps/emacs-plugin")
+(require 'git-emacs)
