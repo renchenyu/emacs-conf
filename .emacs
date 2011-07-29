@@ -25,6 +25,7 @@
 ;;;encoding
 (prefer-coding-system 'euc-jp)
 (prefer-coding-system 'utf-8)
+(prefer-coding-system 'sjis)
 
 ;;; cperl-mode is preferred to perl-mode
 ;;; "Brevity is the soul of wit" <foo at acm.org>
@@ -48,3 +49,13 @@
 ;;; pde
 (add-to-list 'load-path "~/emacs-conf/pde/lisp")
 (load "pde-load")
+
+;;; perltidy
+(defun perltidy ()
+  "Run perltidy on the current region or buffer."
+  (interactive)
+  ; Inexplicably, save-excursion doesn't work here.
+  (let ((orig-point (point)))
+    (unless mark-active (mark-defun))
+    (shell-command-on-region (point) (mark) "perltidy -pbp" nil t)
+    (goto-char orig-point)))
